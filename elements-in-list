@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+}* head_node;
+void create_linkedlist (int A[],int n)/* function to create linked ist */
+{
+    int i;
+    struct node *temp, *p;/* first node creation */
+    head_node =(struct node*)malloc(sizeof(struct node));
+    head_node->data=A[0];
+    head_node->next=NULL;
+    p=head_node;
+    for(i=1;i<n;i++)/*rest of the node's created by using loop*/
+    {
+        temp =(struct node*)malloc(sizeof(struct node));
+        temp->data=A[i];
+        temp->next=NULL;
+        p->next=temp;
+        p=temp;
+    }
+}
+void count_linkedlist(struct node *p)
+{
+    int n;
+    n=0;
+    while(p!=NULL)
+    {
+        n=n+1;
+        p=p->next;
+    }
+        {
+            printf("no of elements =%d",n);
+        }
+}
+int main()
+{
+    int A[]={10,20,30,40,50,60,70,80,90};
+    create_linkedlist(A,8);/*function call*/
+    count_linkedlist(head_node);/* function call*/
+    return 0;
+}
